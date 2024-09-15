@@ -11,8 +11,7 @@ public class PlayerDeadState : MonoBehaviour, IPlayerState
         if(!m_player_ctrl)
             m_player_ctrl = ctrl;
             
-        SoundManager.Instance.PlaySE("Dead");
+        SoundManager.Instance.PlayerDead();
         m_player_ctrl.m_animator.SetTrigger("Dead");
-        GameManager.m_game_state = GameManager.GameState.DEAD;
     }
 }

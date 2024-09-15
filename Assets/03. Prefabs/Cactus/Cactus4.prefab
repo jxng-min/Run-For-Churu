@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70a2ed13bd759fa41972e9bc55f58a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_cactus_speed: 10
-  m_start_position: {x: 15, y: -3.1}
+  m_start_pos: 17
+  m_end_pos: -14
+  m_cactus_y_pos: -3.1
 --- !u!70 &5200693433811301952
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

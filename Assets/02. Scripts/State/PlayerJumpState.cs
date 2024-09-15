@@ -12,8 +12,11 @@ public class PlayerJumpState : MonoBehaviour, IPlayerState
         if(!m_player_ctrl)
             m_player_ctrl = ctrl;
 
-        SoundManager.Instance.PlaySE("Jump");
-        Jump();
+        if(m_player_ctrl.m_is_on_ground &&!m_player_ctrl.m_is_crouch)
+        {
+            SoundManager.Instance.PlayerJump();
+            Jump();
+        }
     }
 
     void Jump()

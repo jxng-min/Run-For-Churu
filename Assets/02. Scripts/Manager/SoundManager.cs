@@ -3,63 +3,33 @@ using System.Collections.Generic;
 using _Singleton;
 using UnityEngine;
 
-[System.Serializable]
-public class Sound
+public class SoundManager: Singleton<SoundManager>
 {
-    public string name;
-    public AudioClip m_clip;
-}
+    public AudioSource m_effect;
 
-public class SoundManager : Singleton<SoundManager>
-{
-    public Sound[] m_effect_sounds;
-    public AudioSource[] m_audio_source_effects;
-    public string[] m_player_sound_name;
+    private AudioClip m_button_click;
+    private AudioClip m_player_jump;
+    private AudioClip m_player_dead;
 
-    void Start()
+    private void Start()
     {
-        m_player_sound_name = new string[m_audio_source_effects.Length];
+        m_button_click = Resources.Load<AudioClip>("07. Audios/Jump");
+        m_player_jump = Resources.Load<AudioClip>("07. Audios/Jump");
+        m_player_dead = Resources.Load<AudioClip>("07. Audios/Dead");
     }
 
-    public void PlaySE(string _name)
+    public void ButtonClick()
     {
-        for (int i = 0; i < m_effect_sounds.Length; i++)
-        {
-            if(_name == m_effect_sounds[i].name)
-            {
-                for (int j = 0; j < m_audio_source_effects.Length; j++)
-                {
-                    if(!m_audio_source_effects[j].isPlaying)
-                    {
-                        m_audio_source_effects[j].clip = m_effect_sounds[i].m_clip;
-                        m_audio_source_effects[j].Play();
-                        m_audio_source_effects[j].volume = 0.5f;
-                        m_player_sound_name[j] = m_effect_sounds[i].name;
-                        return;
-                    }
-                }
-                return;
-            }
-        }
+        m_effect.PlayOneShot(m_button_click);
     }
 
-    public void StopAllSE()
+    public void PlayerJump()
     {
-        for (int i = 0; i < m_audio_source_effects.Length; i++)
-        {
-            m_audio_source_effects[i].Stop();
-        }
+        m_effect.PlayOneShot(m_player_jump);
     }
 
-    public void StopSE(string _name)
+    public void PlayerDead()
     {
-        for (int i = 0; i < m_audio_source_effects.Length; i++)
-        {
-            if(m_player_sound_name[i] == _name)
-            {
-                m_audio_source_effects[i].Stop();
-                break;
-            }
-        }
+        m_effect.PlayOneShot(m_player_dead);
     }
 }
