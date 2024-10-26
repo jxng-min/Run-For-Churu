@@ -5,7 +5,7 @@ using TMPro;
 
 public class TimerCtrl : MonoBehaviour
 {
-    private float m_play_time;
+    public static float m_play_time;
     public TextMeshProUGUI m_timer_text;
 
     private void Start()
