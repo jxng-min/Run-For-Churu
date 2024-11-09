@@ -1862,7 +1862,7 @@ MonoBehaviour:
   m_animator: {fileID: 1850063099}
   m_coll: {fileID: 1850063103}
   m_is_on_ground: 0
-  m_jump_power: 18
+  m_jump_power: 16
   m_ground_layer:
     serializedVersion: 2
     m_Bits: 64
